@@ -33,6 +33,7 @@ class UserRoleController extends Controller
             'items' => $data['items'],
             'links_range' => $data['links_range'],
             'current_page' => $data['current_page'],
+            'total_pages' => $data['total_pages'],
         ]);
     }
 

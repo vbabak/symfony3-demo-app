@@ -57,18 +57,22 @@ class RepositoryAbstract extends \Doctrine\ORM\EntityRepository
             }
             $query_items->setParameter($k, $v);
         }
-        $query_items->setMaxResults($paginationService->getPerPage());
-        $query_items->setFirstResult($paginationService->getOffset());
+
+        $paginationService->setTotalElements($count);
+        $max_result = $paginationService->getPerPage();
+        $query_items->setMaxResults($max_result);
+        $offset = $paginationService->getOffset();
+        $query_items->setFirstResult($offset);
 
         $items = $query_items->getResult();
 
-        $paginationService->setTotalElements($count);
         $links_range = $paginationService->getLinksRange();
 
         return [
             'items' => $items,
             'links_range' => $links_range,
-            'current_page' => $paginationService->getCurrentPage()
+            'current_page' => $paginationService->getCurrentPage(),
+            'total_pages' => $paginationService->getTotalPages(),
         ];
     }
 }

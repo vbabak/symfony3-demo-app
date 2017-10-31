@@ -120,7 +120,7 @@ abstract class PaginationAbstract implements PaginationParamsInterface
         $offset = $this->getCurrentPage() * $this->getPerPage() - $this->getPerPage();
         if ($offset < 0) {
             $offset = 0;
-        } else if ($offset > $this->getTotalPages()) {
+        } else if ($offset > $this->getTotalElements()) {
             $offset = $this->getTotalElements();
         }
 

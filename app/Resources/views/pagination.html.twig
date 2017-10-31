@@ -1,6 +1,7 @@
 {#
 https://getbootstrap.com/docs/3.3/components/#pagination
 #}
+<p>Displaying <b>{{ current_page }}</b> page out of <b>{{ total_pages }}</b> pages</p>
 <ul class="pagination">
     {% for page in links_range %}
         <li class="{% if page == current_page %}active{% endif %}"><a href="?page={{ page }}">{{ page }}</a></li>
