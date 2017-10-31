@@ -132,7 +132,7 @@ abstract class PaginationAbstract implements PaginationParamsInterface
      */
     public function getTotalPages(): int
     {
-        $total_pages = floor($this->getTotalElements() / $this->getPerPage());
+        $total_pages = ceil($this->getTotalElements() / $this->getPerPage());
         $total_pages = max(1, $total_pages);
 
         return (int)$total_pages;
