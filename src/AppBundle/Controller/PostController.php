@@ -43,7 +43,8 @@ class PostController extends Controller
      * @Route("/post-create", name="post_create_page")
      */
     public function createAction(Request $request)
-    {$em = $this->getDoctrine()->getManager();
+    {
+        $em = $this->getDoctrine()->getManager();
         /** @var \AppBundle\Repository\PostRepository $post_repository */
         $post_repository = $em->getRepository(Post::class);
         $post = new Post();
