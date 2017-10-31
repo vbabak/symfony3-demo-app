@@ -1,0 +1,12 @@
+
+.idea
+.DS_STORE
+vendor
+composer.lock
+/var/logs/*
+/var/sessions/*
+/var/cache/*
+*.cache
+parameters.yml
+
+!.gitkeep

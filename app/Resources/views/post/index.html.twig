@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div id="welcome">
+            <h1>Posts</h1>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Text</th>
+                </tr>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.getId() }}</td>
+                        <td>{{ item.getTitle() }}</td>
+                        <td>{{ item.getText()|truncate(200) }} ... </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            {% include 'pagination.html.twig' %}
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+

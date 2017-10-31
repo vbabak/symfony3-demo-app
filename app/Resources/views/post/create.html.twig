@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div id="welcome">
+            <h1>Create Post</h1>
+        </div>
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form_start(form) }}
+        {{ form_row(form._token) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        #form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
