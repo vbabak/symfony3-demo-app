@@ -16,11 +16,12 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class PostController extends Controller
 {
     /**
-     * @Route("/post", name="post_page")
+     * @Route("/post/{page}", name="post_page", defaults={"page" = 1}, requirements={"page": "\d+"})
      */
-    public function indexAction(Request $request)
+    public function indexAction($page, Request $request)
     {
-        $page = (int)$request->get('page', 1);
+        settype($page, 'int');
+        // $page = (int)$request->get('page', 1); // get parameter
         $em = $this->getDoctrine()->getManager();
         /** @var \AppBundle\Repository\PostRepository $post_repository */
         $post_repository = $em->getRepository(Post::class);

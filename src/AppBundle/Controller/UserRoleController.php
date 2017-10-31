@@ -13,11 +13,12 @@ use Symfony\Component\HttpFoundation\Request;
 class UserRoleController extends Controller
 {
     /**
-     * @Route("/user-roles", name="user_roles_page")
+     * @Route("/user-roles/{page}", name="user_roles_page", defaults={"page" = 1}, requirements={"page": "\d+"})
      */
-    public function indexAction(Request $request)
+    public function indexAction($page, Request $request)
     {
-        $page = (int)$request->get('page', 1);
+        settype($page, 'int');
+        // $page = (int)$request->get('page', 1);
         $em = $this->getDoctrine()->getManager();
         /** @var \AppBundle\Repository\UserRoleRepository $user_roles_repository */
         $user_roles_repository = $em->getRepository(UserRole::class);
