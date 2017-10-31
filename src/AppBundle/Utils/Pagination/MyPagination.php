@@ -15,7 +15,7 @@ class MyPagination extends PaginationAbstract implements PaginationInterface
         $total_pages = $this->getTotalPages();
         $next_current_page = (int)min($total_pages, $this->getCurrentPage() + 1); // this is a page in the middle of pagination
         $next_first_page = (int)max(1, $next_current_page - ceil($this->getNumLinks() / 2)); // this will be a start page of pagination
-        if ($total_pages - $next_first_page < $this->getNumLinks()) {
+        if ($total_pages - $next_first_page < $this->getNumLinks() && $total_pages >= $this->getNumLinks()) {
             $next_first_page = $total_pages - $this->getNumLinks() + 1;
         }
         $next_last_page = (int)min($next_first_page + $this->getNumLinks() - 1, $total_pages);
