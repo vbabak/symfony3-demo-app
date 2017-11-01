@@ -3,7 +3,7 @@ Symfony3 Demo Application
 
 Symfony3 demo application
 
-##Requirements
+## Requirements
 
 #### PHP 7.1
 #### Apache2
