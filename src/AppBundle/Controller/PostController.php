@@ -28,7 +28,7 @@ class PostController extends Controller
         /** @var \AppBundle\Utils\Pagination\PaginationAbstract $paginatorService */
         $paginationService = $this->get('pagination'); // from services.yml
         $paginationService->setCurrentPage($page);
-        $data = $post_repository->paginate($paginationService, [], ['code' => 'asc']);
+        $data = $post_repository->paginate($paginationService, [], ['id' => 'desc']);
 
         return $this->render('post/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
