@@ -14,12 +14,14 @@
                     <th>#</th>
                     <th>Title</th>
                     <th>Text</th>
+                    <th>Action</th>
                 </tr>
                 {% for item in items %}
                     <tr>
                         <td>{{ item.getId() }}</td>
                         <td>{{ item.getTitle() }}</td>
                         <td>{{ item.getText()|truncate(200) }} ... </td>
+                        <td><a class="btn btn-action" href="{{ url('post_create_page', {'id': item.getId()}) }}">Edit</a></td>
                     </tr>
                 {% endfor %}
             </table>
