@@ -40,19 +40,25 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/post-create", name="post_create_page")
+     * @Route("/post-create/{id}", name="post_create_page", defaults={"id" = 1}, requirements={"id": "\d+"})
      */
-    public function createAction(Request $request)
+    public function createAction($id, Request $request)
     {
+        settype($id, 'int');
         $em = $this->getDoctrine()->getManager();
         /** @var \AppBundle\Repository\PostRepository $post_repository */
         $post_repository = $em->getRepository(Post::class);
-        $post = new Post();
+        if ($id > 0) {
+            $post = $post_repository->findOneById($id);
+        }
+        if (empty($post)) {
+            $post = new Post();
+        }
 
         $form = $this->createFormBuilder($post)
             ->add('title', TextType::class)
             ->add('text', TextareaType::class)
-            ->add('save', SubmitType::class, array('label' => 'Create'))
+            ->add('save', SubmitType::class, array('label' => $post->getId() ? 'Update' : 'Create'))
             ->getForm();
 
         $form->handleRequest($request);
