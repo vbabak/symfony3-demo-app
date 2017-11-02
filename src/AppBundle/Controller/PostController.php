@@ -40,7 +40,7 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/post-create/{id}", name="post_create_page", defaults={"id" = 1}, requirements={"id": "\d+"})
+     * @Route("/post-create/{id}", name="post_create_page", defaults={"id" = null}, requirements={"id": "\d+"})
      */
     public function createAction($id, Request $request)
     {
