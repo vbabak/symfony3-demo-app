@@ -46,7 +46,8 @@ class User
     /**
      * @var int
      *
-     * @ORM\Column(name="user_role_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="UserRole")
+     * @ORM\JoinColumn(name="user_role_id", referencedColumnName="id")
      */
     private $userRoleId;
 
