@@ -23,8 +23,8 @@
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.created }}</td>
-                <td>{{ user.updated }}</td>
+                <td>{{ user.created|date('Y-m-d') }}</td>
+                <td>{{ user.updated|date('Y-m-d') }}</td>
                 <td>{{ user.status }}</td>
                 <td>
                     <ul>
