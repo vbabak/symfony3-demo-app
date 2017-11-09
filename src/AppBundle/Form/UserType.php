@@ -3,8 +3,11 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class UserType extends AbstractType
 {
@@ -13,9 +16,23 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('firstName')->add('lastName')->add('email')->add('created')->add('updated')->add('status')->add('userRoleId');
+        $builder->add('firstName')->add('lastName')->add('email')->add('userRoleId');
+        $builder->add('userRoleId', EntityType::class, array(
+            'class' => 'AppBundle:UserRole',
+            'choice_label' => 'code',
+            'label' => 'User Role',
+        ));
+        $builder->add('status', ChoiceType::class, array(
+            'choices' => array(
+                'Yes' => 1,
+                'No' => 0,
+            ),
+            'expanded' => true,
+            'multiple' => false,
+            'label' => 'Active',
+        ));
     }
-    
+
     /**
      * {@inheritdoc}
      */

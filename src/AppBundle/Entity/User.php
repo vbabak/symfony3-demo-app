@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -48,6 +49,7 @@ class User
      *
      * @ORM\ManyToOne(targetEntity="UserRole")
      * @ORM\JoinColumn(name="user_role_id", referencedColumnName="id")
+     * @Assert\Type("UserRole")
      */
     private $userRoleId;
 
